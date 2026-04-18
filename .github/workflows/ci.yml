@@ -31,13 +31,14 @@ jobs:
 
         - name: train the model
           run: |
-             python ./IrisClassifier/train.py
-             ls -la ./IrisClassifier/artifacts
+             python train.py
+             ls -la artifacts
           
         - name: upload artifacts
           uses: actions/upload-artifact@v5
           with:
             name: ml-artifacts-${{matrix.python}} -${{github.run_id}}
+            path: IrisClassifier/artifacts/
              
 
 
