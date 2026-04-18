@@ -25,4 +25,17 @@ This repository demonstrates a tiny reproducible MLOps flow:
 5. Start the API:
     python src/app.py
    Then test:
-    curl -X POST "http://127.0.0.1:5000/predict" -H "Content-Type: application/json" -d '{"features":[5.1,3.5,1.4,0.2]}'
+    curl -X POST "http://127.0.0.1:5001/predict" -H "Content-Type: application/json" -d '{"features":[5.1,3.5,1.4,0.2]}'
+## After Installing the docker and creation of DockerFile
+1. Build the Image: 
+   docker build -t Iris-predictor  .
+2. Validate the Image: 
+   docker images
+3. Run the Image in detached mode and also bind the ports:
+   docker run -d -p <localport>:<imageport> <Image name: tag>
+4. Validate  the '/predit' :
+   curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json" -d '{"features":[5.1,3.5,1.4,0.2]}'
+5. Remove the Container(It stops and removes):
+   docker rm -f <Container ID> #run docker ps for the ID
+
+  
